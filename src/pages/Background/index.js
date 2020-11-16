@@ -1,6 +1,10 @@
 import '../../assets/img/icon-34.png';
 import '../../assets/img/icon-128.png';
+import { defaults } from '../../shared/defaults';
 import imageClipper from './image-clipper.js';
+
+chrome.storage.sync.set({ openInTab: defaults.openInTab });
+chrome.storage.sync.set({ download: defaults.download });
 
 const getImageDimensions = (file) => {
   return new Promise(function (resolved, rejected) {
@@ -19,6 +23,9 @@ chrome.browserAction.setTitle({
 
 chrome.browserAction.onClicked.addListener(function () {
   chrome.tabs.captureVisibleTab(function (screenshotUrl) {
+    if (!screenshotUrl) {
+      return;
+    }
     chrome.storage.sync.get(['download', 'openInTab'], (result) => {
       // download image
       if (result.download) {
@@ -43,6 +50,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     let rect = request.rect;
     let windowSize = request.windowSize;
     chrome.tabs.captureVisibleTab(function (screenshotUrl) {
+      if (!screenshotUrl) {
+        return;
+      }
       getImageDimensions(screenshotUrl).then((imageDimensions) => {
         let scale = imageDimensions.w / windowSize.width;
         let x = Math.floor(rect.x * scale);

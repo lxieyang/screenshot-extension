@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { defaults } from '../../shared/defaults';
 import './Options.css';
 
 const Options: React.FC = () => {
-  const [openInTab, setOpenInTab] = useState(true);
+  const [openInTab, setOpenInTab] = useState(false);
   const [download, setDownload] = useState(false);
 
   useEffect(() => {
     chrome.storage.sync.get(['openInTab'], (result) => {
       if (result.openInTab === undefined) {
-        chrome.storage.sync.set({ openInTab });
+        chrome.storage.sync.set({ openInTab: defaults.openInTab });
       } else {
         setOpenInTab(result.openInTab);
       }
@@ -16,7 +17,7 @@ const Options: React.FC = () => {
 
     chrome.storage.sync.get(['download'], (result) => {
       if (result.download === undefined) {
-        chrome.storage.sync.set({ download });
+        chrome.storage.sync.set({ download: defaults.download });
       } else {
         setDownload(result.download);
       }
