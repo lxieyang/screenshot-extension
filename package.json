@@ -10,6 +10,7 @@
   "scripts": {
     "build": "node utils/build.js",
     "start": "node utils/webserver.js",
+    "release": "npm run build && bestzip release.zip build/*",
     "prettier": "prettier --write '**/*.{js,jsx,css,html}'"
   },
   "dependencies": {
@@ -29,6 +30,7 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "babel-preset-react-app": "^10.0.0",
+    "bestzip": "^2.1.7",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^6.2.1",
     "css-loader": "^5.0.0",
