@@ -1,7 +1,7 @@
 {
-  "name": "screenshot-chrome-extension",
+  "name": "screenshot-extension",
   "version": "0.0.1",
-  "description": "A chrome extension that takes screenshots",
+  "description": "A browser extension that takes screenshots",
   "license": "MIT",
   "repository": {
     "type": "git",

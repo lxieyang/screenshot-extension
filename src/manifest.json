@@ -1,24 +1,26 @@
 {
-  "name": "Chrome Extension with React & Webpack",
-  "options_page": "options.html",
+  "name": "Screenshot Extension",
   "background": {
     "page": "background.html"
   },
   "browser_action": {
-    "default_popup": "popup.html",
     "default_icon": "icon-34.png"
   },
-  "chrome_url_overrides": {
-    "newtab": "newtab.html"
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
   },
   "icons": {
     "128": "icon-128.png"
   },
-  "content_scripts": [{
-    "matches": ["http://*/*", "https://*/*", "<all_urls>"],
-    "js": ["contentScript.bundle.js"],
-    "css": ["content.styles.css"]
-  }],
+  "permissions": ["tabs", "downloads", "<all_urls>", "storage"],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*", "<all_urls>"],
+      "js": ["contentScript.bundle.js"],
+      "css": ["content.styles.css"]
+    }
+  ],
   "web_accessible_resources": [
     "content.styles.css",
     "icon-128.png",
