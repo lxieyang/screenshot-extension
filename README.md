@@ -23,6 +23,11 @@ _Currently under review_
 4. Go to `chrome://extensions/` (or `edge://extensions/` if you're using MS Edge) and enable `Developer mode`.
 5. Click `Load Unpacked`, then select the `build` folder (which contains a file called `manifest.json`).
 
+## To use
+
+- Hold the `Option/Alt` key and drag the mouse to create partial screenshots.
+- Click the extension icon to create full-page screenshots.
+
 ---
 
 Michael Xieyang Liu | [Website](https://lxieyang.github.io)
