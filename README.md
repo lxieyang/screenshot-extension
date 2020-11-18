@@ -1,12 +1,14 @@
 # Screenshot Browser Extension
 
+[<img src="src/assets/img/icon-128.png" height="40"/>](https://chrome.google.com/webstore/detail/screenshot-extension/hmkbkbpdnembpeadgpcmjekihjmckdjh)
+
 Based on [Chrome Extension Boilerplate with React 17 and Webpack 5](https://github.com/lxieyang/chrome-extension-boilerplate-react)
 
 ## To install
 
 ### From Chrome store
 
-_Currently under review_
+[<img src="preview/chrome-web-store-img.png" height="40"/>](https://chrome.google.com/webstore/detail/screenshot-extension/hmkbkbpdnembpeadgpcmjekihjmckdjh)
 
 ### From Github Releases
 
