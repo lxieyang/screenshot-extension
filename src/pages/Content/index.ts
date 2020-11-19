@@ -27,6 +27,7 @@ const resetEverything = () => {
   startingX = undefined;
   startingY = undefined;
   document.body.classList.remove('no-select');
+  // document.body.style.removeProperty('cursor');
   resetBBoxAnchor();
   bboxAnchor.classList.remove('active');
 };
@@ -35,6 +36,9 @@ window.addEventListener('mousedown', (event) => {
   if (event.altKey) {
     // Alt / Option key is down
     document.body.classList.add('no-select');
+    // document.body.style.cursor = `url(${chrome.extension.getURL(
+    //   'cross-32.png'
+    // )}), auto`;
 
     mouseIsDown = true;
     startingX = event.clientX;
@@ -118,6 +122,9 @@ window.addEventListener('keydown', (event) => {
   } else if (event.altKey) {
     hotKeyIsDown = true;
     document.body.classList.add('no-select');
+    // document.body.style.cursor = `url(${chrome.extension.getURL(
+    //   'cross-32.png'
+    // )}), auto`;
   }
 });
 
@@ -126,6 +133,7 @@ window.addEventListener('keyup', (event) => {
     hotKeyIsDown = false;
     if (!mouseIsDown) {
       document.body.classList.remove('no-select');
+      // document.body.style.removeProperty('cursor');
     }
   }
 });

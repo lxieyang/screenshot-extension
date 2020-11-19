@@ -1,5 +1,6 @@
 import '../../assets/img/icon-34.png';
 import '../../assets/img/icon-128.png';
+import '../../assets/img/cross-32.png';
 import { defaults } from '../../shared/defaults';
 // @ts-ignore
 import imageClipper from './image-clipper';

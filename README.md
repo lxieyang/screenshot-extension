@@ -4,6 +4,8 @@
 
 Based on [Chrome Extension Boilerplate with React 17 and Webpack 5](https://github.com/lxieyang/chrome-extension-boilerplate-react)
 
+![preview](preview/preview-original.png)
+
 ## To install
 
 ### From Chrome store
@@ -12,7 +14,7 @@ Based on [Chrome Extension Boilerplate with React 17 and Webpack 5](https://gith
 
 ### From Github Releases
 
-1. Download the latest `build.zip` from the [Release](https://github.com/lxieyang/screenshot-extension/releases) page. Or click [here](https://github.com/lxieyang/screenshot-extension/releases/download/v0.0.1/build.zip).
+1. Download the latest `build.zip` from the [Release](https://github.com/lxieyang/screenshot-extension/releases) page. Or click [here](https://github.com/lxieyang/screenshot-extension/releases/download/v1.0.0/build.zip).
 2. Unzip
 3. Go to `chrome://extensions/` (or `edge://extensions/` if you're using MS Edge) and enable `Developer mode`.
 4. Click `Load Unpacked`, then select the unzipped folder (which contains a file called `manifest.json`).
