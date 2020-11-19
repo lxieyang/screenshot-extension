@@ -1,9 +1,3 @@
-#screenshot-bbox {
-  box-sizing: border-box;
-  border: 2px dashed rgba(255, 72, 0, 0.829);
-  background-color: rgba(182, 238, 144, 0.26);
-}
-
 .no-select {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -12,4 +6,16 @@
   -ms-user-select: none;
   user-select: none;
   cursor: crosshair;
+}
+
+#screenshot-bbox {
+  box-sizing: border-box;
+  border: 2px dashed rgba(255, 72, 0, 0.829);
+  background-color: rgba(182, 238, 144, 0.26);
+
+  display: none;
+}
+
+.no-select #screenshot-bbox {
+  display: block;
 }
