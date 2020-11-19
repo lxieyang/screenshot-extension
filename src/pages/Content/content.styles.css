@@ -16,6 +16,6 @@
   display: none;
 }
 
-.no-select #screenshot-bbox {
+#screenshot-bbox.active {
   display: block;
 }

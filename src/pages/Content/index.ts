@@ -21,6 +21,16 @@ const resetBBoxAnchor = () => {
   bboxAnchor.style.removeProperty('height');
 };
 
+const resetEverything = () => {
+  hotKeyIsDown = false;
+  mouseIsDown = false;
+  startingX = undefined;
+  startingY = undefined;
+  document.body.classList.remove('no-select');
+  resetBBoxAnchor();
+  bboxAnchor.classList.remove('active');
+};
+
 window.addEventListener('mousedown', (event) => {
   if (event.altKey) {
     // Alt / Option key is down
@@ -34,26 +44,39 @@ window.addEventListener('mousedown', (event) => {
     bboxAnchor.style.left = `${startingX}px`;
     bboxAnchor.style.width = `0px`;
     bboxAnchor.style.height = `0px`;
+
+    bboxAnchor.classList.add('active');
   }
 });
 
+const rectifyCursorCoordinates = (clientX: number, clientY: number) => {
+  let currX = clientX < 0 ? 0 : clientX,
+    currY = clientY < 0 ? 0 : clientY;
+  return [currX, currY];
+};
+
 window.addEventListener('mousemove', (event) => {
   if (mouseIsDown && startingX !== undefined && startingY !== undefined) {
-    let width = Math.abs(event.clientX - startingX),
-      height = Math.abs(event.clientY - startingY);
+    const [currX, currY] = rectifyCursorCoordinates(
+      event.clientX,
+      event.clientY
+    );
+
+    const width = Math.abs(currX - startingX),
+      height = Math.abs(currY - startingY);
 
     resetBBoxAnchor();
 
-    if (startingY <= event.clientY && startingX <= event.clientX) {
+    if (startingY <= currY && startingX <= currX) {
       bboxAnchor.style.top = `${startingY}px`;
       bboxAnchor.style.left = `${startingX}px`;
-    } else if (startingY <= event.clientY && startingX >= event.clientX) {
+    } else if (startingY <= currY && startingX >= currX) {
       bboxAnchor.style.top = `${startingY}px`;
       bboxAnchor.style.right = `${document.body.clientWidth - startingX}px`;
-    } else if (startingY >= event.clientY && startingX <= event.clientX) {
+    } else if (startingY >= currY && startingX <= currX) {
       bboxAnchor.style.bottom = `${window.innerHeight - startingY}px`;
       bboxAnchor.style.left = `${startingX}px`;
-    } else if (startingY >= event.clientY && startingX >= event.clientX) {
+    } else if (startingY >= currY && startingX >= currX) {
       bboxAnchor.style.bottom = `${window.innerHeight - startingY}px`;
       bboxAnchor.style.right = `${document.body.clientWidth - startingX}px`;
     }
@@ -68,21 +91,18 @@ window.addEventListener('mouseup', (event) => {
     return;
   }
 
+  const [currX, currY] = rectifyCursorCoordinates(event.clientX, event.clientY);
   const rect = {
-    x: Math.min(startingX as number, event.clientX),
-    y: Math.min(startingY as number, event.clientY),
-    width: Math.abs((startingX as number) - event.clientX),
-    height: Math.abs((startingY as number) - event.clientY),
+    x: Math.min(startingX, currX),
+    y: Math.min(startingY, currY),
+    width: Math.abs(startingX - currX),
+    height: Math.abs(startingY - currY),
   };
-
   const windowSize = { width: window.innerWidth, height: window.innerHeight };
 
-  mouseIsDown = false;
-  startingX = undefined;
-  startingY = undefined;
-  document.body.classList.remove('no-select');
-  resetBBoxAnchor();
+  resetEverything();
 
+  // avoid screenshoting the bbox
   setTimeout(() => {
     chrome.runtime.sendMessage({
       msg: 'SCREENSHOT_WITH_COORDINATES',
@@ -94,11 +114,7 @@ window.addEventListener('mouseup', (event) => {
 
 window.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') {
-    mouseIsDown = false;
-    startingX = undefined;
-    startingY = undefined;
-    document.body.classList.remove('no-select');
-    resetBBoxAnchor();
+    resetEverything();
   } else if (event.altKey) {
     hotKeyIsDown = true;
     document.body.classList.add('no-select');
