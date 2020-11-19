@@ -1,5 +1,7 @@
 #screenshot-bbox {
-  border: 1px dashed red;
+  box-sizing: border-box;
+  border: 2px dashed rgba(255, 72, 0, 0.829);
+  background-color: rgba(182, 238, 144, 0.26);
 }
 
 .no-select {
@@ -9,4 +11,5 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  cursor: crosshair;
 }
