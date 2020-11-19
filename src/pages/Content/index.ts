@@ -7,7 +7,8 @@ bboxAnchor.style.left = '0px';
 bboxAnchor.style.width = `0px`;
 bboxAnchor.style.height = `0px`;
 
-let mouseIsDown = false;
+let hotKeyIsDown = false,
+  mouseIsDown = false;
 let startingX: number | undefined = undefined,
   startingY: number | undefined = undefined;
 
@@ -98,5 +99,17 @@ window.addEventListener('keydown', (event) => {
     startingY = undefined;
     document.body.classList.remove('no-select');
     resetBBoxAnchor();
+  } else if (event.altKey) {
+    hotKeyIsDown = true;
+    document.body.classList.add('no-select');
+  }
+});
+
+window.addEventListener('keyup', (event) => {
+  if (hotKeyIsDown && !event.altKey) {
+    hotKeyIsDown = false;
+    if (!mouseIsDown) {
+      document.body.classList.remove('no-select');
+    }
   }
 });
