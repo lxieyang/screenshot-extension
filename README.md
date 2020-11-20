@@ -2,6 +2,16 @@
 
 [<img src="src/assets/img/icon-128.png" height="40"/>](https://chrome.google.com/webstore/detail/screenshot-extension/hmkbkbpdnembpeadgpcmjekihjmckdjh)
 
+![package.json version](https://img.shields.io/github/package-json/v/lxieyang/screenshot-extension/master)
+[![MIT License](https://img.shields.io/github/license/lxieyang/screenshot-extension)](LICENSE)
+
+![last commit](https://img.shields.io/github/last-commit/lxieyang/screenshot-extension/master)
+![commit freq](https://img.shields.io/github/commit-activity/w/lxieyang/screenshot-extension)
+
+<!--
+[![users](https://img.shields.io/chrome-web-store/users/hmkbkbpdnembpeadgpcmjekihjmckdjh)](https://chrome.google.com/webstore/detail/screenshot-extension/hmkbkbpdnembpeadgpcmjekihjmckdjh)
+-->
+
 Based on [Chrome Extension Boilerplate with React 17 and Webpack 5](https://github.com/lxieyang/chrome-extension-boilerplate-react)
 
 ![preview](preview/preview-original.png)
@@ -11,6 +21,8 @@ Based on [Chrome Extension Boilerplate with React 17 and Webpack 5](https://gith
 ### From Chrome store
 
 [<img src="preview/chrome-web-store-img.png" height="40"/>](https://chrome.google.com/webstore/detail/screenshot-extension/hmkbkbpdnembpeadgpcmjekihjmckdjh)
+
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/hmkbkbpdnembpeadgpcmjekihjmckdjh)](https://chrome.google.com/webstore/detail/screenshot-extension/hmkbkbpdnembpeadgpcmjekihjmckdjh)
 
 ### From Github Releases
 
